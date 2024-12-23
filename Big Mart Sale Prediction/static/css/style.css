@@ -1,0 +1,230 @@
+:root {
+  --first-color: #fff;
+  --second-color: #343a40;
+  --third-color: #cd5c5c;
+  --white: #fff;
+  --black: #222;
+  --orchid: #613659;
+  --grey1: #f0f0f0;
+  --grey2: #e9d7d3;
+  --mauve: #D3B1C2;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Utilities */
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Navbar Section */
+.navbar .navbar-nav .nav-link {
+  color: var(--first-color);
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.5s;
+}
+
+.navbar .navbar-nav .nav-link.active {
+  color: var(--third-color) !important;
+}
+
+.navbar .navbar-nav .nav-link.active:hover {
+  color: var(--first-color) !important;
+  text-transform: uppercase !important;
+  transform: scale(.8);
+  gap: 4;
+  font-weight: bold;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  text-transform: uppercase;
+  background-color: var(--third-color);
+  border-radius: 18%;
+  transform: scale(0.8);
+  gap: 4;
+  font-weight: bold;
+}
+
+.navbar .dropdown-menu {
+  color: var(--first-color);
+  background-color: var(--second-color);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  font-size: 1em;
+  font-weight: 600;
+  color: #fff;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: var(--third-color);
+}
+
+/* Image Gallery Section */
+.header {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+@media (min-width: 1200px) {
+  .carousel-item {
+    height: calc(100vh - 72.8px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-item img {
+    height: 100%;
+  }
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 1500px) {
+  .droiid .left {
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .glide__slide--active .left {
+    top: 15%;
+  }
+
+  .center .right img.img1 {
+    width: 90%;
+  }
+
+  .center .right img.img2 {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 567px) {
+  .center .right img.img1 {
+    width: 30rem;
+  }
+
+  .center .right img.img2 {
+    width: 33rem;
+  }
+
+  .droiid,
+  .droiid .glide__slides {
+    margin: 0;
+    padding: 0 3rem;
+  }
+
+  .droiid .left h1 {
+    font-size: 3rem;
+  }
+
+  .droiid .left span {
+    font-size: 1.4rem;
+  }
+
+  .droiid .left p {
+    font-size: 1.5rem;
+    width: 80%;
+  }
+}
+/* 
+=================
+Droiid Area
+=================
+*/
+
+.droiid,
+.droiid .glide__slides {
+  background-color: var(--mauve);
+  position: center;
+  height: calc(100vh - 6rem);
+  overflow: hidden;
+}
+
+.droiid .center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  padding-top: 3rem;
+}
+
+.droiid .left {
+  position: absolute;
+  top: 0%;
+  left: 25rem;
+  opacity: 0;
+  transition: all 1000ms ease-in-out;
+}
+
+.droiid .left h1 {
+  font-size: 9rem;
+  margin: 1rem 0;
+  font-weight: bold;
+  color: aqua;
+}
+
+.droiid .left p {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+
+}
+
+.droiid .left .droiid-btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  background-color: var(--orchid);
+  color: white;
+  border-radius: 1.5rem;
+}
+
+.droiid .right {
+  flex: 0 0 50%;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.droiid .right img {
+  position: absolute;
+  width: 55rem;
+  margin-bottom: 4px;
+  opacity: 0;
+  transition: all 1000ms ease-in-out;
+}
+
+.center .right img.img1 {
+  width: 85%;
+  right: -40%;
+  bottom: -50%;
+  padding-bottom: 10px;
+}
+
+.center .right img.img2 {
+  width: 75%;
+  right: -30%;
+  bottom: -40%;
+  padding-bottom: 5px;
+}
+
+.glide__slide--active .center .right img {
+  bottom: -3%;
+  opacity: 1;
+}
+
+.glide__slide--active .left {
+  opacity: 1;
+  top: 35%;
+}
+
+/*

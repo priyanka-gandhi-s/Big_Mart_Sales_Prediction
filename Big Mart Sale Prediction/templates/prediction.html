@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOKAN_SHOP - Sales Prediction</title>
+    <link rel="icon" href="media/images/main-logo.png" type="image/x-icon">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Work+Sans:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        .form-container {
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: #daa5c4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        @media (min-width: 1200px) {
+  .carousel-item {
+    height: calc(100vh - 72.8px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-item img {
+    height: 100%;
+  }
+}
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-column {
+            padding: 0 15px;
+        }
+
+        .btn-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body style="background-image: url(./static/images/ss.png);">
+    <nav class="navbar navbar-expand-lg text-white navbar-dark bg-dark">
+        <div class="container">
+            <div class="navbar-brand">
+                <i class="fas fa-chart-line text-white fs-1"></i>
+                <a class="logo text-white fs-3 fw-bold" href="#">Big Mart Sales</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent" data-bs-theme="dark">
+                <ul class="navbar-nav mb-2 mb-lg-0 gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link  text-center text-capitalize" aria-current="page" href="/index">home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="/upload">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-center" href="/prediction">Prediction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="/evaluation">Evaluation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" href="/chart">Chart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logout()">Logout <i class="fas fa-sign-out-alt"></i></a>
+                      </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <center>
+        <div class="container form-container" >
+            <div class="form-header">
+                <h2>Sales Prediction</h2>
+            </div>
+<form action="{{ url_for('predict')}}" method="post">
+            <div class="row">
+                <div class="col-md-6 form-column">
+                    <div class="mb-3">
+                        <label for="Weight">Weight:</label><br>
+                    <input type="text" id="Weight" name="Weight" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ItemFatContent" class="form-label">Item Fat Content</label>
+                        <select class="form-select" method="post" id="ItemFatContent" name="Item Fat Content" required>
+                            <option value="Low Fat">Low Fat</option>
+                            <option value="Regular">Regular</option>
+                            
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ItemType" class="form-label">Item Type</label>
+                        <select class="form-select" method="post" id="ItemType" name="Item Type" required>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Soft Drinks">Soft Drinks</option>
+                            <option value="Meat">Meat</option>
+                            <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                            <option value="Household">Household</option>
+                            <option value="Baking Goods">Baking Goods</option>
+                            <option value="Snack Foods">Snack Foods</option>
+                            <option value="Frozen Foods">Frozen Foods</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Health and Hygiene">Health and Hygiene</option>
+                            <option value="Hard Drinks">Hard Drinks</option>
+                            <option value="Canned">Canned</option>
+                            <option value="Breads">Breads</option>
+                            <option value="Starchy Foods">Starchy Foods</option>
+                            <option value="Others">Others</option>
+                            <option value="Seafood">Seafood</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ItemMRP" class="form-label">Item MRP</label>
+                        <input type="text" method="post" class="form-control" id="ItemMRP" name="Item MRP" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ItemVisibility" class="form-label">Item Visibility</label>
+                        <input type="text" method="post" class="form-control" id="ItemVisibility" name="Item Visibility" required>
+                    </div>
+                </div>
+                <div class="col-md-6 form-column">
+                    
+                    <div class="mb-3">
+                        <label for="OutletEstablishmentYear" class="form-label">Outlet Establishment Year</label>
+                        <input type="text" method="post" class="form-control" id="OutletEstablishmentYear" name="Outlet Establishment Year" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="OutletSize" class="form-label">Outlet Size</label>
+                        <select class="form-select" method="post" id="OutletSize" name="Outlet Size" required>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="OutletLocationType" class="form-label">Outlet Location Type</label>
+                        <select class="form-select" method="post" id="OutletLocationType" name="Outlet Location Type" required>
+                            <option value="Tier 1">Tier 1</option>
+                            <option value="Tier 2">Tier 2</option>
+                            <option value="Tier 3">Tier 3</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="OutletType" class="form-label">Outlet Type</label>
+                        <select class="form-select" method="post" id="OutletType" name="Outlet Type" required>
+                            <option value="Grocery Store">Grocery Store</option>
+                            <option value="Supermarket Type1">Supermarket Type1</option>
+                            <option value="Supermarket Type2">Supermarket Type2</option>
+                            <option value="Supermarket Type3">Supermarket Type3</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Model" class="form-label">Model</label>
+                        <select class="form-select" id="Model" name="Model" required>
+                            <option value="XGBoost">XGBoost</option>
+                            <option value="Decision Tree">Decision Tree</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-center">
+                <button type="submit" class="btn btn-primary btn-lg">Predict Sales</button>
+            </div>
+        </form>
+    </center>
+    <script>function logout() {
+        window.location.href = '/';
+        sessionStorage.clear();
+        document.cookie.split(";").forEach(function(c) {
+            document.cookie = c.trim().split("=")[0] + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        });
+    }</script>
+</body>
+</html>

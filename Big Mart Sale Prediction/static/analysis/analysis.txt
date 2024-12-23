@@ -1,0 +1,25 @@
+DT
+Training Performance Metrics:
+Mean Absolute Error (MAE): 0.0000
+Mean Squared Error (MSE): 0.0000
+Root Mean Squared Error (RMSE): 0.0000
+R-squared (R²): 1.0000
+Test Performance Metrics:
+Mean Absolute Error (MAE): 2.2092
+Mean Squared Error (MSE): 8.0390
+Root Mean Squared Error (RMSE): 2.8353
+R-squared (R²): 0.3270
+
+
+
+XGboost
+Training Performance Metrics:
+Mean Absolute Error (MAE): 0.3027
+Mean Squared Error (MSE): 0.1611
+Root Mean Squared Error (RMSE): 0.4014
+R-squared (R²): 0.9866
+Test Performance Metrics:
+Mean Absolute Error (MAE): 1.7361
+Mean Squared Error (MSE): 4.9259
+Root Mean Squared Error (RMSE): 2.2194
+R-squared (R²): 0.5876

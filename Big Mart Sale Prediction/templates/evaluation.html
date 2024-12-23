@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Mart Sales</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Work+Sans:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/mobile.css">
+  <link rel="stylesheet" href="static/css/tablet.css">
+  <link rel="stylesheet" href="static/css/custom-framework.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css">
+
+  <style>
+    :root {
+      --first-color: #fff;
+      --second-color: #343a40;
+      --third-color: #cd5c5c;
+      --white: #fff;
+      --black: #222;
+      --orchid: #613659;
+      --grey1: #f0f0f0;
+      --grey2: #e9d7d3;
+      --mauve: #d67cb4;
+    }
+    .navbar {
+  background-color: #000000 !important;
+  border-color: #000000;
+}
+
+.navbar .navbar-brand {
+  color: var(--white) !important;
+  font-size: 1.5em; /* Adjust font size as needed */
+  font-weight: bold;
+}
+
+.navbar .navbar-nav {
+  margin-left: auto; /* Pushes nav items to the right */
+}
+
+.navbar .navbar-nav .nav-link {
+  color: var(--white) !important;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.5s;
+}
+
+.navbar .navbar-nav .nav-link.active {
+  color: var(--third-color) !important;
+}
+
+.navbar .navbar-nav .nav-link.active:hover {
+  color: var(--first-color) !important;
+  text-transform: uppercase !important;
+  transform: scale(.8);
+  gap: 4;
+  font-weight: bold;
+}
+.overlay {
+  position: absolute;
+  top: 70px;
+  left: 10px;
+  width: 98.5%;
+  height: 67%;
+  background-color: black; /* Black color for the overlay */
+  opacity: 0.5; /* Adjust opacity here (0 is fully transparent, 1 is fully opaque) */
+  pointer-events: none; /* Ensures the overlay does not interfere with clicking on the image */
+}
+.navbar .navbar-nav .nav-link:hover {
+  text-transform: uppercase;
+  background-color: var(--third-color);
+  border-radius: 18%;
+  transform: scale(0.8);
+  gap: 4;
+  font-weight: bold;
+}
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("./images/Screenshot.png");
+      z-index: -1;
+    }
+    /* Utilities */
+    a {
+      text-decoration: none;
+    }
+    @media (min-width: 1200px) {
+  .carousel-item {
+    height: calc(100vh - 72.8px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-item img {
+    height: 100%;
+  }
+}
+
+    ul {
+      list-style: none;
+    }
+
+    .navbar {
+      background-color: #000000 !important;
+      border-color: #000000;
+    }
+
+    .navbar .navbar-brand,
+    .navbar .navbar-nav .nav-link {
+      color: var(--white) !important;
+      font-size: 1em;
+      font-weight: bold;
+      transition: all 0.5s;
+    }
+
+    .navbar .navbar-nav .nav-link.active {
+      color: var(--third-color) !important;
+    }
+
+    .navbar .navbar-nav .nav-link.active:hover {
+      color: var(--first-color) !important;
+      text-transform: uppercase !important;
+      transform: scale(.8);
+      gap: 4;
+      font-weight: bold;
+    }
+
+    .navbar .navbar-nav .nav-link:hover {
+      text-transform: uppercase;
+      background-color: var(--third-color);
+      border-radius: 18%;
+      transform: scale(0.8);
+      gap: 4;
+      font-weight: bold;
+    }
+
+    .navbar .dropdown-menu {
+      color: var(--first-color);
+      background-color: var(--second-color);
+    }
+
+    .navbar .dropdown-menu .dropdown-item {
+      font-size: 1em;
+      font-weight: 600;
+      color: #000000;
+    }
+
+    .navbar .dropdown-menu .dropdown-item:hover {
+      background-color: var(--third-color);
+    }
+    .text-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #e5ff00;
+      font-size: 3rem;
+      font-weight: bold;
+      
+      background-clip: text;
+      
+      padding: 1rem;
+      text-align: center;
+    }
+    /* Image Gallery Section */
+    .header {
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Responsive Styles */
+    @media only screen and (max-width: 1500px) {
+      .droiid .left {
+        left: 0;
+      }
+    }
+
+    @media only screen and (max-width: 999px) {
+      .glide__slide--active .left {
+        top: 15%;
+      }
+
+      .center .right img.img1 {
+        width: 90%;
+      }
+
+      .center .right img.img2 {
+        width: 100%;
+      }
+    }
+
+    @media only screen and (max-width: 567px) {
+      .center .right img.img1 {
+        width: 30rem;
+      }
+
+      .center .right img.img2 {
+        width: 33rem;
+      }
+
+      .droiid,
+      .droiid .glide__slides {
+        margin: 0;
+        padding: 0 3rem;
+      }
+
+      .droiid .left h1 {
+        font-size: 3rem;
+      }
+
+      .droiid .left span {
+        font-size: 1.4rem;
+      }
+
+      .droiid .left p {
+        font-size: 1.5rem;
+        width: 30%;
+      }
+    }
+
+    .droiid,
+    .droiid .glide__slides {
+      background: none; 
+      position: relative;
+      height: calc(100vh - 6rem);
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .droiid {
+      position: relative;
+      height: calc(100vh - 6rem); /* Adjust as needed */
+      overflow: hidden;
+    }
+
+    .droiid .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 85%;
+    }
+
+    .droiid .left {
+      position: absolute;
+      top: 25%; /* Adjust as needed */
+      left: 5rem; /* Adjust as needed */
+      opacity: 1; /* Set to 1 to ensure visibility */
+      transition: all 1000ms ease-in-out;
+    }
+
+    .droiid .left h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem; /* Adjust size as needed */
+      margin: 1rem 0;
+      color: rgb(0, 0, 0);
+    }
+
+    .droiid .left p {
+      font-size: 1.6rem; 
+      font-weight: bold;/* Adjust size as needed */
+      margin-bottom: 1rem;
+      color: rgb(0, 0, 0);
+    }
+
+    .droiid .left .droiid-btn {
+      display: inline-block;
+      padding: 0.5rem 0.5rem;
+      font-size: 1.4rem;
+      margin-top: 0rem;
+      background-color: var(--orchid);
+      color: white;
+      border-radius: 1.5rem;
+    }
+
+    .droiid .right {
+      flex: 0 0 50%;
+      height: 100%;
+      position: relative;
+      text-align: center;
+    }
+
+    .droiid .right img {
+      position: absolute;
+      width: 55rem; /* Adjust size as needed */
+      margin-bottom: 4px;
+      opacity: 0;
+      transition: all 1000ms ease-in-out;
+    }
+
+    .center .right img.img1 {
+      width: 55%;
+      bottom: -30%;
+      right: -20%;
+      padding-bottom: 0px;
+    }
+
+    .glide__slide--active .center .right img {
+      bottom: -3%;
+      opacity: 1;
+    }
+
+    .glide__slide--active .left {
+      opacity: 1;
+      top: 35%;
+    }
+
+    .content-container {
+      padding: 2rem;
+    }
+
+    .metrics-container {
+      background-color: var(--grey1);
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .metrics-container h2 {
+      color: var(--black);
+    }
+
+    .metrics-container table {
+      width: 100%;
+    }
+
+    .metrics-container table,
+    .metrics-container th,
+    .metrics-container td {
+      border: 1px solid var(--black);
+      border-collapse: collapse;
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    .image-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--grey2);
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body style="background-color: var(--mauve);">
+  <!-- Start Navbar Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <div class="navbar-brand">
+        <i class="fas fa-chart-line text-white fs-1"></i>
+        <a class="logo text-white fs-3 fw-bold" href="#">Big Mart Sales</a>
+    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link  text-center text-capitalize" aria-current="page" href="/index">home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-center" href="/upload">Upload</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-center" href="/prediction">Prediction</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active text-center" href="/evaluation">Evaluation</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-center" href="/chart">Chart</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="logout()">Logout <i class="fas fa-sign-out-alt"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar Section -->
+  <div class="image-container">
+    <div class="text-border">
+    <img src="static/images/ss2.png" alt="">
+    <div class="overlay"></div>
+    <div class="text-overlay">Prediction Model Performance analysis</div></div>
+  </div>
+  <!-- Start Header Section -->
+  <header class="header" >
+    <div class="content-container">
+      <div class="metrics-container" style="background-color: rgb(250, 226, 178);">
+        <h2>Performance Metrics</h2>
+        <table style="background-color: #ffffff;">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Decision Tree</th>
+              <th>XGBoost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Training Mean Absolute Error (MAE)</td>
+              <td>0.0000</td>
+              <td>0.3027</td>
+            </tr>
+            <tr>
+              <td>Training Root Mean Squared Error (RMSE)</td>
+              <td>0.0000</td>
+              <td>0.4014</td>
+            </tr>
+            <tr>
+              <td>Testing Mean Absolute Error (MAE)</td>
+              <td>2.2092</td>
+              <td>1.7361</td>
+            </tr>
+            <tr>
+              <td>Testing Root Mean Squared Error (RMSE)</td>
+              <td>2.8353</td>
+              <td>2.2194</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="metrics-container" style="background-color: rgb(255, 249, 169);">
+        <h2>Analytics Overview</h2>
+        <p>In the Big Mart Sales Prediction , several models were evaluated, 
+          including Random Forest Regressor, Linear Regression, LGBM Regression, XGBoost, and 
+          Decision Tree Regressor. Among these, both Decision Tree Regressor and XGBoost emerged 
+          as the top-performing models. Notably, the Decision Tree Regressor demonstrated higher 
+          accuracy with actual values and a lower Mean Absolute Error (MAE) compared to XGBoost. 
+          This makes the Decision Tree Regressor the most accurate model for this dataset, 
+          while both Decision Tree and XGBoost are considered the best models for predicting Big Mart sales.</p>
+      </div>
+<center><H1 style="color: #f5f10d;font-weight: bold;">Illustration of Performance</H1></center>
+<center><h2 style="color: blue;">Decision Tree Analysis</h2></center>
+<div class="image-container">
+  <h3>Decision Tree  HeatMap</h3>
+  <img src="./static/analysis/Decision_Tree/correlation.png" alt="Decision Tree Testing Residual Distribution">
+</div>
+      <div class="image-container">
+        <h3>Decision Tree Training Residual Distribution</h3>
+        <img src="./static/analysis/Decision_Tree/Training.png" alt="Decision Tree Training Residual Distribution">
+      </div>
+
+      <div class="image-container">
+        <h3>Decision Tree Testing Residual Distribution</h3>
+        <img src="./static/analysis/Decision_Tree/Testing.png" alt="Decision Tree Testing Residual Distribution">
+      </div>
+      <div class="image-container">
+        <h3>Decision Tree Train  vs Actual Values</h3>
+        <img src="./static/analysis/Decision_Tree/trainingvsactual.png" alt="Decision Tree Training Residual Distribution">
+      </div>
+      <div class="image-container">
+        <h3>Decision Tree Test vs Actual Values</h3>
+        <img src="./static/analysis/Decision_Tree/testvaluevsactual.png" alt="Decision Tree Test vs Actual Values">
+      </div>
+      <center><h2 style="color: blue;">XG_boost Analysis</h2></center>
+      <div class="image-container">
+        <h3>XGBoost HeatMap</h3>
+        <img src="./static/analysis/XG_boost/correlation.png" alt="XGBoost Training Residual Distribution">
+      </div>
+      <div class="image-container">
+        <h3>XGBoost Training Residual Distribution</h3>
+        <img src="./static/analysis/XG_boost/train.png" alt="XGBoost Training Residual Distribution">
+      </div>
+
+      <div class="image-container">
+        <h3>XGBoost Testing Residual Distribution</h3>
+        <img src="./static/analysis/XG_boost/Test.png" alt="XGBoost Testing Residual Distribution">
+      </div>
+      <div class="image-container">
+        <h3>XGBoost Train vs Actual Values</h3>
+        <img src="./static/analysis/XG_boost/trainvsactual.png" alt="XGBoost Test vs Actual Values">
+      </div>
+      <div class="image-container">
+        <h3>XGBoost Test vs Actual Values</h3>
+        <img src="./static/analysis/XG_boost/testvspredicted.png" alt="XGBoost Test vs Actual Values">
+      </div>
+      
+    </div>
+  </header>
+  <!-- End Header Section -->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+  <script>
+    new Glide('.droiid', {
+      type: 'carousel',
+      startAt: 0,
+      perView: 1,
+      hoverpause: true,
+      keyboard: true,
+      animationDuration: 1000,
+    }).mount();
+    function logout() {
+
+window.location.href = '/'; 
+sessionStorage.clear();
+
+// Example: Optionally, clear cookies (if applicable)
+document.cookie.split(";").forEach(function(c) {
+  document.cookie = c.trim().split("=")[0] + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+});
+
+}
+  </script>
+</body>
+
+</html>
